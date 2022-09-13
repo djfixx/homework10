@@ -1,4 +1,4 @@
 public interface GoodsWarehouse {
-    public void addItem(String name);
+    public void addItem();
 
 }
