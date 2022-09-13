@@ -12,8 +12,8 @@ public  class Warehouse implements GoodsWarehouse {
     }
 
 
-    @Override
-    public void addItem() {
 
-    }
+    //public void addItem() {
+
+    //}
 }

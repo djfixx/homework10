@@ -1,13 +1,5 @@
 public class Foodstuffs extends  Goods {
-    private int weight;
-    private  String name;
-
-    public String getName() {
-        return name;
-    }
-    private  int priceDollars;
-    private int priceCents;
-    private int id;
+    protected int weight;
 
     public int getId() {
         return id;
@@ -17,16 +9,14 @@ public class Foodstuffs extends  Goods {
         this.id = id;
     }
 
-
-    public Foodstuffs(int weight, String name, int priceDollars, int priceCents) {
+    public Foodstuffs(int weight, String name, int priceDollars, int priceCents, int quantity) {
         this.weight = weight;
-        this.name = name;
+        super.name = name;
         this.priceDollars = priceDollars;
         this.priceCents = priceCents;
+        this.quantity = quantity;
         Warehouse.warehouse.add(name);
         this.id = Warehouse.warehouse.indexOf(name);
     }
-
-
 
 }

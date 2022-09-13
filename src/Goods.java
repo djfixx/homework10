@@ -1,10 +1,9 @@
 public  class Goods {
-    private int id;
-    private String name;
-    private int priceDollars;
-    private int priceCents;
+    protected int id;
+    protected String name;
+    protected int quantity;
+    protected int priceDollars;
+    protected int priceCents;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 }
