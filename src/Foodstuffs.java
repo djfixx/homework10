@@ -1,22 +1,24 @@
-public class Foodstuffs extends  Goods {
-    protected int weight;
+public class Foodstuffs extends Goods{
+    private int weight;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Foodstuffs(int weight, String name, int priceDollars, int priceCents, int quantity) {
+    public Foodstuffs(String name, int priceInDollars, int priceInCents, int weight, int quantity) {
+        this.name = name;
+        this.priceInDollars = priceInDollars;
+        this.priceInCents = priceInCents;
         this.weight = weight;
-        super.name = name;
-        this.priceDollars = priceDollars;
-        this.priceCents = priceCents;
         this.quantity = quantity;
-        Warehouse.warehouse.add(name);
-        this.id = Warehouse.warehouse.indexOf(name);
+    }
+    public String getName(){
+        return name;
     }
 
+
+    public String toString() {
+        return "Foodstuffs{" +
+                "name = " + name + " | " +
+                " price = " + priceInDollars + "," + priceInCents + " | " +
+                " weight = " + weight + " | " +
+                " quantity = " + quantity +
+                '}';
+    }
 }

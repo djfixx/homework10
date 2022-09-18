@@ -1,19 +1,13 @@
 import java.util.ArrayList;
+import java.util.Map;
 
-public  class Warehouse implements GoodsWarehouse {
-    public static ArrayList<String> warehouse = new ArrayList<>();
-    public int getId(String name) {
-        int id = warehouse.indexOf(name);
-        return id;
+public  class Warehouse implements GoodsWarehouse, Cloneable {
+
+
+
+
+
     }
 
-    public void addItem(String name){
-        warehouse.add(name);
-    }
 
 
-
-    //public void addItem() {
-
-    //}
-}
