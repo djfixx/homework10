@@ -14,11 +14,11 @@ public class Foodstuffs extends Goods{
 
 
     public String toString() {
-        return "Foodstuffs{" +
-                "name = " + name + " | " +
-                " price = " + priceInDollars + "," + priceInCents + " | " +
-                " weight = " + weight + " | " +
-                " quantity = " + quantity +
-                '}';
+        return "Продукты |" +
+                 name + " | " +
+                " Цена: " + priceInDollars + "," + priceInCents + " | " +
+                " Вес: " + weight + " | " +
+                " Количество на складе: = " + quantity +
+                '|';
     }
 }

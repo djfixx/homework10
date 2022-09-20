@@ -1,31 +1,64 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Customer {
-    protected int id;
+
     protected String name;
     protected int cashDollars;
     protected int cashCents;
     protected int purchasedGoods;
+    protected static int userId = 0;
 
     public int getId() {
-        return id;
+        return userId;
     }
 
-    protected ArrayList<String> customers = new ArrayList<>();
-    protected ArrayList<String> reservedGoods = new ArrayList<>();
+    @Override
+    public String toString() {
+        return "Покупатель: " +
+                "Имя: " + name + " | "+
+                "Балланс: " + cashDollars +
+                "," + cashCents +
+                " | Количество купленных товаров: " + purchasedGoods +
+                '|';
+    }
 
-    public Customer(String name, int cashDollars, int cashCents, int purchasedGoods) {
+    protected HashMap<Integer, Customer> customers = new HashMap<>();
+
+
+    public Customer(String name, int cashDollars, int cashCents) {
         this.name = name;
         this.cashDollars = cashDollars;
         this.cashCents = cashCents;
-        this.purchasedGoods = purchasedGoods;
-        customers.add(name);
-        this.id = customers.indexOf(name);
+
+
     }
 
-
-
-
-
+    public void addCustomer(Customer customer) {
+        if (customers.containsValue(customer)) {
+            Optional<Integer> key = customers.entrySet()
+                    .stream()
+                    .filter(entry -> customer.equals(entry.getValue()))
+                    .map(Map.Entry::getKey)
+                    .findFirst();
+            if (key.isPresent())
+                //System.out.println(key.get());
+                //System.out.println("Ключ: " + key);
+                //System.out.println(storage.get(key.get()).getQuantity());
+                //System.out.println(goods.getQuantity());
+                System.out.println("Такой пользователь уже есть в базе");
+        } else {
+            customers.put(userId, customer);
+            userId++;
+            System.out.println(customer.toString());
+            //System.out.println(storage.get(1));
+        }
+    }
 
 }
+
+
+
+
+
+
+
