@@ -29,8 +29,6 @@ public class Customer {
         this.name = name;
         this.cashDollars = cashDollars;
         this.cashCents = cashCents;
-
-
     }
 
     public void addCustomer(Customer customer) {
@@ -41,16 +39,12 @@ public class Customer {
                     .map(Map.Entry::getKey)
                     .findFirst();
             if (key.isPresent())
-                //System.out.println(key.get());
-                //System.out.println("Ключ: " + key);
-                //System.out.println(storage.get(key.get()).getQuantity());
-                //System.out.println(goods.getQuantity());
                 System.out.println("Такой пользователь уже есть в базе");
         } else {
             customers.put(userId, customer);
             userId++;
             System.out.println(customer.toString());
-            //System.out.println(storage.get(1));
+
         }
     }
 

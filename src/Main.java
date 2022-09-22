@@ -1,5 +1,7 @@
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Goods warehouse = new Goods();
         ShoppingCart bin = new ShoppingCart();
         Foodstuffs sugar = new Foodstuffs("Сахар", 1, 50, 1000, 5);
@@ -16,6 +18,6 @@ public class Main {
 
         warehouse.getAllGoods(warehouse);
         bin.addToCart(warehouse.getStorage());
-
+bin.getAllGoods();
     }
 }

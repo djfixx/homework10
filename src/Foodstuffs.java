@@ -1,6 +1,7 @@
 public class Foodstuffs extends Goods{
     private int weight;
 
+
     public Foodstuffs(String name, int priceInDollars, int priceInCents, int weight, int quantity) {
         this.name = name;
         this.priceInDollars = priceInDollars;
@@ -8,9 +9,7 @@ public class Foodstuffs extends Goods{
         this.weight = weight;
         this.quantity = quantity;
     }
-    public String getName(){
-        return name;
-    }
+
 
 
     public String toString() {

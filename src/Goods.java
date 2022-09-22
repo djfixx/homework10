@@ -1,9 +1,18 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class Goods implements Cloneable{
+public class Goods implements Serializable {
+
+
     protected String name;
     protected int priceInDollars;
     protected int priceInCents;
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     protected int quantity;
     protected HashMap<Integer, Goods> storage = new HashMap<>();
 
@@ -15,12 +24,13 @@ public class Goods implements Cloneable{
 
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity + this.quantity;
+        this.quantity = quantity;
     }
 
     public int getQuantity() {
         return quantity;
     }
+    public String getName(){ return name; }
 
     //добавление товаров на склад
     public void addItem(Goods goods) {
@@ -31,7 +41,7 @@ public class Goods implements Cloneable{
                     .map(Map.Entry::getKey)
                     .findFirst();
             if (key.isPresent())
-            System.out.println("Такой отвар уже есть в базе. Идентификатор товара: " + key.get());
+            System.out.println("Такой товар уже есть в базе. Идентификатор товара: " + key.get());
             System.out.println("Добавить к существующему? Введите 1, если да, 0, если нет" );
             Scanner imput = new Scanner(System.in);
             int a = imput.nextInt();
@@ -41,7 +51,7 @@ public class Goods implements Cloneable{
                 int b = imput.nextInt();
                 if (b < 0) System.out.println("Вы ввели неправильное число");
                 else {
-                    goods.setQuantity(b);
+                    goods.setQuantity(storage.get(key.get()).getQuantity() + b);
                     System.out.println(storage.get(key.get()).getQuantity());
                 }
 
@@ -52,14 +62,7 @@ public class Goods implements Cloneable{
             storage.put(id, goods);
             id++;
             System.out.println(id + " " + storage.containsValue(goods));
-            //System.out.println(storage.get(1));
         }
-    }
-
-
-
-    private String getName() {
-        return name;
     }
 
     @Override
@@ -80,9 +83,8 @@ public class Goods implements Cloneable{
 
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public static int getId() {
+        return id;
     }
 }
 
