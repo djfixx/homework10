@@ -61,7 +61,7 @@ public class Goods implements Serializable {
         } else {
             storage.put(id, goods);
             id++;
-            System.out.println(id + " " + storage.containsValue(goods));
+           // System.out.println(id + " " + storage.containsValue(goods));
         }
     }
 
