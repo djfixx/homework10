@@ -22,9 +22,9 @@ public class ShoppingCart {
 
     @Override
     public String toString() {
-        return "ShoppingCart{" +
-                "reservedGoods=" + reservedGoods +
-                '}';
+        return "Корзина |" +
+                "добавленные товары =" + reservedGoods +
+                '|';
     }
 
     public static int getId() {
@@ -61,18 +61,11 @@ public class ShoppingCart {
                 if (qty < 1 || qty > goods.get(id).getQuantity())
                     System.out.println("Количество товара не может быть отрицательным или большим чем есть товар в наличии");
                 else {
-
-//                    System.out.println(goods.get(id).getQuantity());
-//                    System.out.println(goodsClone.getQuantity());
                     goodsClone.setQuantity(qty);
                     goods.get(id).setQuantity(goods.get(id).getQuantity() - qty);
-//                    System.out.println(goods.get(id).getQuantity());
-//                    System.out.println(goodsClone.getQuantity());
                     System.out.println(reservedGoods.toString());
 
                 }
-
-
             }
         }
     }
@@ -84,6 +77,8 @@ public class ShoppingCart {
             Goods product = entry.getValue();
             System.out.println(id + " " + product);
         }
+    }
+    public void buy(){
 
     }
 }

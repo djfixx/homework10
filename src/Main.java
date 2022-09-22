@@ -18,6 +18,6 @@ public class Main {
 
         warehouse.getAllGoods(warehouse);
         bin.addToCart(warehouse.getStorage());
-bin.getAllGoods();
+        bin.getAllGoods();
     }
 }
