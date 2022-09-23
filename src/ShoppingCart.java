@@ -4,21 +4,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ShoppingCart {
-    protected String name;
-    protected int priceInDollars;
-    protected int priceInCents;
-    protected int quantity;
-    protected static int id = 0;
 
-    public int getQuantity() {
-        return quantity;
-    }
+    //protected static int id = 0;
+
 
     protected HashMap<Integer, Goods> reservedGoods = new HashMap<>();
-
-    public HashMap<Integer, Goods> getReservedGoods() {
-        return reservedGoods;
-    }
 
     @Override
     public String toString() {
@@ -27,9 +17,6 @@ public class ShoppingCart {
                 '|';
     }
 
-    public static int getId() {
-        return id;
-    }
 
     public void addToCart(HashMap<Integer, Goods> goods) throws IOException, ClassNotFoundException {
         Scanner input = new Scanner(System.in);
@@ -54,8 +41,6 @@ public class ShoppingCart {
                 Goods product = entry.getValue();
                 System.out.println(idx + " " + product);
                 System.out.println("Введите желаемое количество товара: ");
-                goods.get(id).getQuantity();
-
 
                 int qty = input.nextInt();
                 if (qty < 1 || qty > goods.get(id).getQuantity())
@@ -72,13 +57,22 @@ public class ShoppingCart {
 
     public void getAllGoods() {
         System.out.println("Товары в корзине");
-        for(Map.Entry<Integer, Goods> entry : reservedGoods.entrySet()){
+        for (Map.Entry<Integer, Goods> entry : reservedGoods.entrySet()) {
             Integer id = entry.getKey();
             Goods product = entry.getValue();
             System.out.println(id + " " + product);
         }
     }
-    public void buy(){
 
+    public void buy() {
+        int totalPriceInDollars = 0;
+        int totalPriceInCents = 0;
+        for (Map.Entry<Integer, Goods> entry : reservedGoods.entrySet()) {
+            int priceD = entry.getValue().priceInDollars;
+            int priceC = entry.getValue().priceInCents;
+            totalPriceInDollars = (priceD + totalPriceInDollars) * entry.getValue().getQuantity();
+            totalPriceInCents = (priceC + totalPriceInCents) * entry.getValue().getQuantity();
+        }
+        System.out.println("Стоимость товаров в корзине: " + totalPriceInDollars + "," + totalPriceInCents);
     }
 }

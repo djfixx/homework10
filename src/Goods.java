@@ -9,9 +9,7 @@ public class Goods implements Serializable {
     protected int priceInCents;
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     protected int quantity;
     protected HashMap<Integer, Goods> storage = new HashMap<>();
@@ -30,7 +28,6 @@ public class Goods implements Serializable {
     public int getQuantity() {
         return quantity;
     }
-    public String getName(){ return name; }
 
     //добавление товаров на склад
     public void addItem(Goods goods) {
@@ -40,16 +37,17 @@ public class Goods implements Serializable {
                     .filter(entry -> goods.equals(entry.getValue()))
                     .map(Map.Entry::getKey)
                     .findFirst();
-            if (key.isPresent())
+            if (key.isPresent()){
             System.out.println("Такой товар уже есть в базе. Идентификатор товара: " + key.get());
             System.out.println("Добавить к существующему? Введите 1, если да, 0, если нет" );
+            }
             Scanner imput = new Scanner(System.in);
             int a = imput.nextInt();
             if(a > 1 || a < 0) System.out.println("Вы ввели неправильное число");
             else if (a == 1) {
                 System.out.println("Введите количество товара , которое хотите добавить");
                 int b = imput.nextInt();
-                if (b < 0) System.out.println("Вы ввели неправильное число");
+                if (b < 1) System.out.println("Вы ввели неправильное число");
                 else {
                     goods.setQuantity(storage.get(key.get()).getQuantity() + b);
                     System.out.println(storage.get(key.get()).getQuantity());
@@ -61,7 +59,7 @@ public class Goods implements Serializable {
         } else {
             storage.put(id, goods);
             id++;
-           // System.out.println(id + " " + storage.containsValue(goods));
+
         }
     }
 
@@ -83,9 +81,6 @@ public class Goods implements Serializable {
 
     }
 
-    public static int getId() {
-        return id;
-    }
 }
 
 

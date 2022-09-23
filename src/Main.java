@@ -9,12 +9,16 @@ public class Main {
         Foodstuffs salt = new Foodstuffs("Соль", 1, 0, 1000, 3);
         Foodstuffs oranges = new Foodstuffs("Апельсины", 1, 0, 1000, 10);
         Clothes tshirt = new Clothes("Футболка", 5, 0, "L", "Лето", 5);
+        Furniture table = new Furniture("Стол", "Корпусная мебель", 120, 0, 5);
+        Souvenirs magnet = new Souvenirs("Магнит на холодильник", 0 , 50, 10);
 
         warehouse.addItem(salt);
         warehouse.addItem(sugar);
         warehouse.addItem(oranges);
         warehouse.addItem(oranges);
         warehouse.addItem(tshirt);
+        warehouse.addItem(table);
+        warehouse.addItem(magnet);
 
         Customer johnDoe = new Customer("John Doe", 300, 0);
         johnDoe.addCustomer(johnDoe);
@@ -22,5 +26,6 @@ public class Main {
         warehouse.getAllGoods(warehouse);
         bin.addToCart(warehouse.getStorage());
         bin.getAllGoods();
+        bin.buy();
     }
 }
